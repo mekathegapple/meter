@@ -28,7 +28,7 @@ public class RobotContainer {
         new JoystickButton(m_Joystick, 1), // *Calibrate
         new JoystickButton(m_Joystick, 2), // *Hold
         new JoystickButton(m_Joystick, 5), // *SetAngle
-        new JoystickButton(m_Joystick, 7) // *Invert
+        new JoystickButton(m_Joystick, 7), // *Invert
         new JoystickButton(m_Joystick, 8) // *ResetEncoder
     };
     //Joystick Buttons Binding
