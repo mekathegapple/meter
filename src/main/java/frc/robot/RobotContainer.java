@@ -29,12 +29,14 @@ public class RobotContainer {
         new JoystickButton(m_Joystick, 2), // *Hold
         new JoystickButton(m_Joystick, 5), // *SetAngle
         new JoystickButton(m_Joystick, 7) // *Invert
+        new JoystickButton(m_Joystick, 8) // *ResetEncoder
     };
     //Joystick Buttons Binding
     button[0].toggleOnTrue(m_calibration);
     button[1].toggleOnTrue(m_hold);
     button[2].toggleOnTrue(m_setangle);
     button[3].toggleOnTrue(new InstantCommand(() -> m_meter.invert())); //todo test this
+    button[4].toggleOnTrue(new InstantCommand(() -> m_meter.resetEncoder())); //todo test this
   }
 
 }

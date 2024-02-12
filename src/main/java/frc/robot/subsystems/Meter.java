@@ -60,6 +60,10 @@ public class Meter extends SubsystemBase {
         return (Math.toDegrees(m_encoder.getDistance()) + OperatorConstants.startingAngle);
     }
 
+    public void resetEncoder() { //Reset Encoder
+        m_encoder.reset();
+    }
+
     // * Other Methods * //
 
     public double getFeedForward(double angleInRadian) { // Calculates The Feed Forward Value
