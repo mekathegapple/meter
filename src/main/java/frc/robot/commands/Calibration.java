@@ -18,11 +18,11 @@ public class Calibration extends Command {
 
     @Override
     public void initialize() {
-        double vol = SmartDashboard.getNumber("Voltage", 0.0);
     }
 
     @Override
     public void execute() {
+        double vol = SmartDashboard.getNumber("Voltage", 0.0);
         m_meter.setVoltage(vol);
     }
 

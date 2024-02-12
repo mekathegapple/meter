@@ -80,11 +80,13 @@ public class Meter extends SubsystemBase {
         SmartDashboard.putNumber("Encoder Raw Value", m_encoder.get());
         SmartDashboard.putNumber("Encoder Value + Starting Angle",
                 getDistance() + Math.toRadians(OperatorConstants.startingAngle));
+                SmartDashboard.putNumber("Encoder Angle + Starting", Math.toDegrees(getDistance()) + OperatorConstants.startingAngle);
         SmartDashboard.putNumber("Total Current", m_pdp.getTotalCurrent());
     }
 
     @Override
     public void periodic() {
+        debug();
         SmartDashboard.putNumber("Motor Voltage", m_armMotor.getMotorOutputVoltage());
     }
 }
