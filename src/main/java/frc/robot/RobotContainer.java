@@ -24,19 +24,19 @@ public class RobotContainer {
   }
 
   private void configureBindings() {
-    JoystickButton button[] = { //Joystick Buttons Array
+    JoystickButton button[] = { // Joystick Buttons Array
         new JoystickButton(m_Joystick, 1), // *Calibrate
         new JoystickButton(m_Joystick, 2), // *Hold
         new JoystickButton(m_Joystick, 5), // *SetAngle
         new JoystickButton(m_Joystick, 7), // *Invert
         new JoystickButton(m_Joystick, 8) // *ResetEncoder
     };
-    //Joystick Buttons Binding
+    // Joystick Buttons Binding
     button[0].toggleOnTrue(m_calibration);
     button[1].toggleOnTrue(m_hold);
     button[2].toggleOnTrue(m_setangle);
-    button[3].toggleOnTrue(new InstantCommand(() -> m_meter.invert())); //todo test this
-    button[4].toggleOnTrue(new InstantCommand(() -> m_meter.resetEncoder())); //todo test this
+    button[3].toggleOnTrue(new InstantCommand(() -> m_meter.invert())); // todo test this
+    button[4].toggleOnTrue(new InstantCommand(() -> m_meter.resetEncoder())); // todo test this
   }
 
 }

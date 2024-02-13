@@ -8,7 +8,7 @@ import frc.robot.subsystems.Meter;
 
 /**
  * SetAngle
- *  Sets the angle of the meter using PID and Feed Forward Control
+ * Sets the angle of the meter using PID and Feed Forward Control
  */
 public class SetAngle extends Command {
     private final Meter m_meter;
@@ -32,7 +32,8 @@ public class SetAngle extends Command {
 
     @Override
     public void execute() {
-        double FeedForward = m_meter.getFeedForward(m_meter.getDistance() + Math.toRadians(OperatorConstants.startingAngle));
+        double FeedForward = m_meter
+                .getFeedForward(m_meter.getDistance() + Math.toRadians(OperatorConstants.startingAngle));
         double vol = FeedForward + m_pidController.calculate(m_meter.getAngle());
         SmartDashboard.putNumber("FeedForward Voltage", FeedForward);
         SmartDashboard.putNumber("PID Voltage", m_pidController.calculate(m_meter.getAngle()));

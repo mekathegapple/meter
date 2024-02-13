@@ -17,31 +17,30 @@ public class Meter extends SubsystemBase {
     private Encoder m_encoder;
     private WPI_VictorSPX m_armMotor;
     private PowerDistribution m_pdp;
-    
+
     public Meter() {
         m_encoder = new Encoder(2, 3);
         m_armMotor = new WPI_VictorSPX(1);
         m_pdp = new PowerDistribution();
         m_armMotor.setNeutralMode(NeutralMode.Coast);
         configureEncoder(m_encoder, true);
-        initDashboard();
-
+        //initDashboard();
     }
 
     // * Motor Methods * //
 
-    public void invert() { //Inverts The Motors
+    public void invert() { // Inverts The Motors
         boolean invertion = m_armMotor.getInverted();
         m_armMotor.setInverted(!invertion);
         SmartDashboard.putBoolean("Invertion", !invertion);
     }
 
-    public void setVoltage(double Voltage) {//Sets The Voltage Of The Motors
+    public void setVoltage(double Voltage) {// Sets The Voltage Of The Motors
         m_armMotor.setVoltage(Voltage);
     }
 
-    public boolean isPowered() { //Returns If The Motors Are Powered
-        return m_armMotor.getMotorOutputVoltage() != 0 ?  true :  false;
+    public boolean isPowered() { // Returns If The Motors Are Powered
+        return m_armMotor.getMotorOutputVoltage() != 0 ? true : false;
     }
 
     // * Encoder Methods * //
@@ -60,7 +59,7 @@ public class Meter extends SubsystemBase {
         return (Math.toDegrees(m_encoder.getDistance()) + OperatorConstants.startingAngle);
     }
 
-    public void resetEncoder() { //Reset Encoder
+    public void resetEncoder() { // Reset Encoder
         m_encoder.reset();
     }
 
@@ -71,7 +70,7 @@ public class Meter extends SubsystemBase {
         return direction * (3.91 * Math.abs(Math.cos(angleInRadian)) + 1.8);
     }
 
-    public void initDashboard() { //!Temporary Method
+    public void initDashboard() { // !Temporary Method
         SmartDashboard.putNumber("Voltage", 0);
         SmartDashboard.putNumber("P Value", 0);
         SmartDashboard.putNumber("I Value", 0);
@@ -79,12 +78,13 @@ public class Meter extends SubsystemBase {
         SmartDashboard.putNumber("Set Point", 0);
     }
 
-    public void debug() { //Prints The Values To Debug To The Dashboard
+    public void debug() { // Prints The Values To Debug To The Dashboard
         SmartDashboard.putNumber("Encoder Value", m_encoder.getDistance());
         SmartDashboard.putNumber("Encoder Raw Value", m_encoder.get());
-        SmartDashboard.putNumber("Encoder Value + Starting Angle",
+        SmartDashboard.putNumber("Encoder Value + Starting Radian",
                 getDistance() + Math.toRadians(OperatorConstants.startingAngle));
-                SmartDashboard.putNumber("Encoder Angle + Starting", Math.toDegrees(getDistance()) + OperatorConstants.startingAngle);
+        SmartDashboard.putNumber("Encoder Angle + Starting Angle",
+                Math.toDegrees(getDistance()) + OperatorConstants.startingAngle);
         SmartDashboard.putNumber("Total Current", m_pdp.getTotalCurrent());
     }
 
