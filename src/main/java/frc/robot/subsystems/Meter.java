@@ -24,7 +24,7 @@ public class Meter extends SubsystemBase {
         m_pdp = new PowerDistribution();
         m_armMotor.setNeutralMode(NeutralMode.Coast);
         configureEncoder(m_encoder, true);
-        //initDashboard();
+        initDashboard();
     }
 
     // * Motor Methods * //
@@ -37,10 +37,6 @@ public class Meter extends SubsystemBase {
 
     public void setVoltage(double Voltage) {// Sets The Voltage Of The Motors
         m_armMotor.setVoltage(Voltage);
-    }
-
-    public boolean isPowered() { // Returns If The Motors Are Powered
-        return m_armMotor.getMotorOutputVoltage() != 0 ? true : false;
     }
 
     // * Encoder Methods * //
@@ -67,7 +63,7 @@ public class Meter extends SubsystemBase {
 
     public double getFeedForward(double angleInRadian) { // Calculates The Feed Forward Value
         double direction = Math.cos(angleInRadian) < 0 ? -1 : 1;
-        return direction * (3.91 * Math.abs(Math.cos(angleInRadian)) + 1.8);
+        return direction * (3.37 * Math.abs(Math.cos(angleInRadian)) + 0.796);
     }
 
     public void initDashboard() { // !Temporary Method
